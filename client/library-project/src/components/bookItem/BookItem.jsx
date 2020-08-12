@@ -1,12 +1,16 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 import styled from "styled-components";
 
-const BookItem = ({ image, title, author }) => {
+const BookItem = ({ id, image, title, author }) => {
   return (
     <BookItemWrapper className="book_item">
-      <img src={image} alt="book cover" />
-      <div className="book_title">{title}</div>
-      <div className="author">{author}</div>
+      <NavLink to={`/books/${id}`}>
+        <img src={image} alt="book cover" />
+        <div className="book_title">{title}</div>
+        <div className="author">{author}</div>
+      </NavLink>
     </BookItemWrapper>
   );
 };
@@ -31,7 +35,11 @@ const BookItemWrapper = styled.div`
 
   .author {
     text-align: center;
+  }
+
+  a {
     color: ${({ theme: { colors } }) => colors.gray_2};
+    width: 100%;
   }
 
   img {
