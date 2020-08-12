@@ -12,10 +12,6 @@ export const SearchBookInner = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  img {
-    width: 100%;
-  }
-
   .book_item {
     width: 20%;
   }

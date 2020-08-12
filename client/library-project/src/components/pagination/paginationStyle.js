@@ -6,7 +6,7 @@ export const PaginationWrapper = styled.div`
   justify-content: center;
 
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 
   svg {
     font-size: 30px;

@@ -7,6 +7,7 @@ export const DetailWrapper = styled.div`
   justify-content: center;
 
   margin-top: ${({ theme }) => theme.interval.base};
+  margin-bottom: ${({ theme }) => theme.interval.xl};
   padding-bottom: ${({ theme }) => theme.interval.base};
 
   h3 {
@@ -23,16 +24,20 @@ export const DetailWrapper = styled.div`
 `;
 
 export const DetailInner = styled.div`
-  width: 70vw;
+  width: 50vw;
 
   img {
     width: 300px;
     box-shadow: ${({ theme: { boxShadow } }) => boxShadow.boxShadow_1};
   }
 
-  @media ${({ theme: { device } }) => device.tablet} {
+  @media ${({ theme: { device } }) => device.tabletL} {
+    width: 90vw;
     img {
       width: 200px;
+    }
+    button {
+      padding: 0;
     }
   }
 
@@ -49,6 +54,10 @@ export const BookInfomationWrapper = styled.div`
   width: 100%;
   margin-bottom: ${({ theme: { interval } }) => interval.base};
 
+  .title {
+    color: ${({ theme: { colors } }) => colors.black};
+  }
+
   .rental {
     button {
       width: 100%;
@@ -63,11 +72,16 @@ export const BookInfomationWrapper = styled.div`
   .book_detail_info {
     width: 100%;
     margin-left: ${({ theme: { margins } }) => margins.base};
+    color: ${({ theme: { colors } }) => colors.gray_2};
     div {
       margin-bottom: ${({ theme: { margins } }) => margins.base};
-      color: ${({ theme: { colors } }) => colors.gray_2};
     }
   }
+`;
+
+export const IsRental = styled.div`
+  color: ${(props) => props.fontColor};
+  font-weight: bold;
 `;
 
 export const BookDescriptionWrapper = styled.div`
