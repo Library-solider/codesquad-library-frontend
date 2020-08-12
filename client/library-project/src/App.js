@@ -22,7 +22,7 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route path="/" component={IntroPage} exact={true} />
-          <Route path="/bookdetail/:id" component={DetailBook} />
+          <Route path="/books/:id" component={DetailBook} />
           <Route path="/search" component={SearchBook} />
           <Route path="/category/:id" component={SearchBook} />
         </Switch>
