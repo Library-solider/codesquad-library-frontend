@@ -68,7 +68,13 @@ const SearchBook = () => {
       <SearchBookWrapper>
         <SearchBookInner>
           {books.map((el) => (
-            <BookItem image={el.imageUrl} title={el.title} author={el.author} />
+            <BookItem
+              key={el.id}
+              id={el.id}
+              image={el.imageUrl}
+              title={el.title}
+              author={el.author}
+            />
           ))}
         </SearchBookInner>
       </SearchBookWrapper>

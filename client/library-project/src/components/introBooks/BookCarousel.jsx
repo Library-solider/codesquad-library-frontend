@@ -42,6 +42,7 @@ const BookCarousel = (props) => {
     return (
       <BookItem
         key={el.id}
+        id={el.id}
         image={el.imageUrl}
         title={el.title}
         author={el.author}
