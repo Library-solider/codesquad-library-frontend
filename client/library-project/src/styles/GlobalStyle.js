@@ -20,6 +20,11 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
   }
 
+  html {
+    position : relative;
+    min-height: 100%;
+  }
+
   body {
     height: 100%;    
   }
