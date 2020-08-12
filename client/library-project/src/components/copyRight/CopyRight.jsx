@@ -14,6 +14,9 @@ const CopyRight = () => {
 };
 
 const CopyRightWrapper = styled.div`
+  width: 100%;
+  bottom: 0;
+  position: absolute;
   display: flex;
   align-items: center;
   text-align: center;
