@@ -1,5 +1,5 @@
 import { createGlobalStyle, css } from "styled-components";
-import reset from "styled-reset";
+import { Reset } from "styled-reset";
 
 const font = css`
   @font-face {
@@ -12,7 +12,7 @@ const font = css`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  ${reset};
+  ${Reset};
   ${font};
 
   * {
@@ -47,6 +47,7 @@ export const GlobalStyle = createGlobalStyle`
      outline : none;
     }
   }
+ 
 
   a {
     color: ${({ theme: { colors } }) => colors.white};
