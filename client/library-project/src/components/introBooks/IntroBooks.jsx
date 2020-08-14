@@ -7,7 +7,7 @@ import BookCarousel from "./BookCarousel";
 import { useFetch } from "../../hooks/useFetch";
 
 const IntroBooks = () => {
-  const { response, error } = useFetch(process.env.REACT_APP_DB_HOST_MAIN);
+  const { response, error } = useFetch(process.env.REACT_APP_DB_HOST_MAIN, []);
 
   if (!response)
     return (
