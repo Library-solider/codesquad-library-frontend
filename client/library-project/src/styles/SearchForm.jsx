@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SearchForm = styled.div`
+export const SearchForm = styled.form`
   display: flex;
   width: 50vw;
   position: relative;
@@ -12,16 +12,10 @@ export const SearchForm = styled.div`
     border-bottom-left-radius: ${({ theme: { radius } }) => radius.xSmall};
   }
 
-  .search_form {
-    display: flex;
-    width: 50vw;
-    margin-bottom: ${({ theme: { margins } }) => margins.base};
-  }
-
   .search_result {
     position: absolute;
     z-index: 2;
-    bottom: -100%;
+    top: 110%;
     width: 100%;
     padding: ${({ theme: { paddings } }) => paddings.lg};
     border-radius: ${({ theme: { radius } }) => radius.xSmall};
