@@ -19,7 +19,7 @@ const Navbar = () => {
         fillColor={themeContext.colors.green_1}
         textColor={themeContext.colors.white}
       >
-        Login
+        <a href="/v1/oauth2/authorization/github">Login</a>
       </LoginButton>
     </NavbarWrapper>
   );
