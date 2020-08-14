@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = (url, dependence) => {
+export const useFetch = (url, dependenceArr) => {
   const [error, setError] = useState(false);
   const [response, setResponse] = useState(null);
 
@@ -15,7 +15,7 @@ export const useFetch = (url, dependence) => {
       }
     };
     initialFetch();
-  }, [dependence && dependence]);
+  }, dependenceArr);
 
   return { response, error };
 };
