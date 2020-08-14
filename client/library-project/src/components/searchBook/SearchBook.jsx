@@ -34,9 +34,10 @@ const SearchBook = () => {
 
   // State
 
-  const { response, error } = useFetch(requestUrl, parsedSearchQueries.page);
-
-  // Style
+  const { response, error } = useFetch(requestUrl, [
+    parsedSearchQueries.page,
+    parsedSearchQueries.q,
+  ]);
   const themeContext = useContext(ThemeContext);
   const { colors } = themeContext;
 
