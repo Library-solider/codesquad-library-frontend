@@ -49,7 +49,7 @@ const Search = () => {
 
   useEffect(() => {
     if (parsedSearchQueries.q) setKeyword(parsedSearchQueries.q);
-  }, []);
+  }, [parsedSearchQueries.q]);
 
   useEffect(() => {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));

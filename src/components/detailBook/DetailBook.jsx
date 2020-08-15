@@ -11,7 +11,7 @@ import BookDescription from "./BookDescription";
 const DetailBook = () => {
   const history = useHistory();
   const requestUrl = process.env.REACT_APP_DB_HOST + history.location.pathname;
-  const { response, error } = useFetch(requestUrl);
+  const { response, error } = useFetch(requestUrl, []);
 
   if (!response)
     return (

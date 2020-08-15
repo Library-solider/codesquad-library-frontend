@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styled from "styled-components";
 import { Loading } from "../../styles/Loading";
@@ -18,6 +18,7 @@ const IntroBooks = () => {
         />
       </Loading>
     );
+  if (error) return <div>{error.message}</div>;
 
   return (
     <IntroBooksWrapper>

@@ -14,8 +14,9 @@ export const useFetch = (url, dependenceArr) => {
         setError(error);
       }
     };
+
     initialFetch();
-  }, dependenceArr);
+  }, [url, ...dependenceArr]);
 
   return { response, error };
 };
