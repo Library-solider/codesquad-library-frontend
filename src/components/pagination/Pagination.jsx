@@ -47,7 +47,7 @@ const Pagination = ({ totalItem, itemPerPage, showPageCount, currentPage }) => {
             }
 
             return (
-              <Page isActive={currentPage === moveToPage}>
+              <Page isActive={currentPage === moveToPage} key={idx}>
                 <NavLink to={calcUpdatePagination(location, moveToPage)}>
                   {moveToPage}
                 </NavLink>
