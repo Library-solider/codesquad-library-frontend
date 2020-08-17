@@ -84,6 +84,7 @@ const colors = {
   white: "#FFFFFF",
   gray_1: "#222222",
   gray_2: "#767676",
+  gray_3: "#F2F2F2",
   green_1: "#3cb46e",
   blue: "#0366d6",
   blue_2: "rgb(31, 140, 230)",
