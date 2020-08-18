@@ -20,8 +20,9 @@ const HistoryItem = ({
     <HistoryItemWrapper
       isActive={indexPosition === currentPosition}
       onMouseOver={updateCurrentPosition}
+      onClick={moveSearchResult}
     >
-      <span onClick={moveSearchResult}>{historyKeyword}</span>
+      <span>{historyKeyword}</span>
       <button onClick={onClickRemoveButton}>
         <MdClose />
       </button>
