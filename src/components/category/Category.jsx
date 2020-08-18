@@ -4,21 +4,22 @@ import styled from "styled-components";
 import { CATEGORY_LIST_DATA } from "../../constants/category";
 
 const Category = ({ fillColor, fontColor, isActive }) => {
-  const categoryList = CATEGORY_LIST_DATA.map((el) => {
-    return (
-      <CategoryLink
-        href={el.HREF}
-        isActive={isActive === el.CATEGORY_ID ? true : false}
-      >
-        <el.ICON />
-        <div>{el.CATEGORY_TITLE}</div>
-      </CategoryLink>
-    );
-  });
-
   return (
     <CategoryWrapper fillColor={fillColor} fontColor={fontColor}>
-      <CategoryInner>{categoryList}</CategoryInner>
+      <CategoryInner>
+        {CATEGORY_LIST_DATA.map((el, idx) => {
+          return (
+            <CategoryLink
+              key={idx}
+              href={el.HREF}
+              isActive={isActive === el.CATEGORY_ID ? true : false}
+            >
+              <el.ICON />
+              <div>{el.CATEGORY_TITLE}</div>
+            </CategoryLink>
+          );
+        })}
+      </CategoryInner>
     </CategoryWrapper>
   );
 };
