@@ -4,16 +4,16 @@ import styled from "styled-components";
 const COPY_RIGHT = "Copyright © 2020 codesquad library. All rights reserved";
 const ADMIN_EMAIL = "jhchoi1115@gmail.com";
 
-const CopyRight = () => {
+const Footer = () => {
   return (
-    <CopyRightWrapper>
+    <FooterWrapper>
       <div>{COPY_RIGHT}</div>
       <a href="mailto:jhchoi1115@gmail.com">{ADMIN_EMAIL}</a>
-    </CopyRightWrapper>
+    </FooterWrapper>
   );
 };
 
-const CopyRightWrapper = styled.div`
+const FooterWrapper = styled.div`
   width: 100%;
   bottom: 0;
   position: absolute;
@@ -28,4 +28,4 @@ const CopyRightWrapper = styled.div`
   padding: ${({ theme: { paddings } }) => paddings.xxxl};
 `;
 
-export default CopyRight;
+export default Footer;
