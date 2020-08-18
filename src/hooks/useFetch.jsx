@@ -9,6 +9,7 @@ export const useFetch = (url, dependenceArr) => {
       try {
         const response = await fetch(url);
         const initialData = await response.json();
+        console.log(initialData);
         setResponse(initialData);
       } catch (error) {
         setError(error);
