@@ -6,9 +6,6 @@ import { Button } from "../../styles/Button";
 
 import Search from "../search/Search";
 
-import { JSESSION_KEY } from "../../constants/cookie";
-import { getCookie } from "../../utils/cookie";
-
 const Navbar = () => {
   const themeContext = useContext(ThemeContext);
 
