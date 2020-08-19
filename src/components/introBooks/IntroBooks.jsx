@@ -7,7 +7,7 @@ import { Loading } from "../../styles/Loading";
 import BookCarousel from "./BookCarousel";
 import ErrorPage from "../errorPage/ErrorPage";
 
-const MAIN_API = "https://d3e9fjannntuih.cloudfront.net/main";
+const MAIN_API = "https://d3e9fjannntuih.cloudfront.net/v1/main";
 
 const IntroBooks = () => {
   const { response } = useFetch(MAIN_API, []);

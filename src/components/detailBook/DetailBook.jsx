@@ -8,7 +8,7 @@ import { Loading } from "../../styles/Loading";
 import BookInfomation from "./BookInfomation";
 import BookDescription from "./BookDescription";
 
-const DB_HOST = "https://d3e9fjannntuih.cloudfront.net";
+const DB_HOST = "https://d3e9fjannntuih.cloudfront.net/v1";
 
 const DetailBook = () => {
   const history = useHistory();
