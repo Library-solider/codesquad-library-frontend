@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import IntroPage from "./page/IntroPage";
 import DetailBook from "./components/detailBook/DetailBook";
 import SearchBook from "./components/searchBook/SearchBook";
+import RentalHistory from "./components/rentalHistory/RentalHistory";
 import ErrorPage from "./components/errorPage/ErrorPage";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/books/:id" component={DetailBook} />
           <Route path="/search" component={SearchBook} />
           <Route path="/category/:id" component={SearchBook} />
+          <Route path="/mypage/rentalHistory" component={RentalHistory} />
           <Route
             render={() => {
               return <ErrorPage status={404} />;
