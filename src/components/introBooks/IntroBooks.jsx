@@ -7,8 +7,10 @@ import { Loading } from "../../styles/Loading";
 import BookCarousel from "./BookCarousel";
 import ErrorPage from "../errorPage/ErrorPage";
 
+const MAIN_API = "http://3.34.7.107/v1/main";
+
 const IntroBooks = () => {
-  const { response } = useFetch(process.env.REACT_APP_DB_HOST_MAIN, []);
+  const { response } = useFetch(MAIN_API, []);
 
   if (!response)
     return (

@@ -8,9 +8,11 @@ import { Loading } from "../../styles/Loading";
 import BookInfomation from "./BookInfomation";
 import BookDescription from "./BookDescription";
 
+const DB_HOST = "http://3.34.7.107/v1";
+
 const DetailBook = () => {
   const history = useHistory();
-  const requestUrl = process.env.REACT_APP_DB_HOST + history.location.pathname;
+  const requestUrl = DB_HOST + history.location.pathname;
   const { response, error } = useFetch(requestUrl, []);
 
   if (!response)
