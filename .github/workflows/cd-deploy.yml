@@ -30,7 +30,7 @@ jobs:
       - name: npm 설치
         run: npm install
       - name: npm 빌드
-        run: npm run build
+        run: unset CI && npm run build
       - name: Transfer to S3 for serving static
         uses: jakejarvis/s3-sync-action@master
         with:
