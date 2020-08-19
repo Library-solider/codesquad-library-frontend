@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import IntroPage from "./page/IntroPage";
 import DetailBook from "./components/detailBook/DetailBook";
 import SearchBook from "./components/searchBook/SearchBook";
+import ErrorPage from "./components/errorPage/ErrorPage";
 
 const App = () => {
   return (
@@ -27,7 +28,7 @@ const App = () => {
           <Route path="/category/:id" component={SearchBook} />
           <Route
             render={() => {
-              return <div>못찾았어요</div>;
+              return <ErrorPage status={404} />;
             }}
           />
         </Switch>

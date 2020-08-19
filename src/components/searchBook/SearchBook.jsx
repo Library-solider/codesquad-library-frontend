@@ -4,12 +4,18 @@ import { useIsMobile } from "../../hooks/useMediaQuery";
 import querystring from "query-string";
 
 import { ThemeContext } from "styled-components";
+import { FcSearch } from "react-icons/fc";
 import { Loading } from "../../styles/Loading";
-import { SearchBookWrapper, SearchBookInner } from "./searchBookStyle";
+import {
+  SearchBookWrapper,
+  SearchBookInner,
+  NoneResultWrapper,
+} from "./searchBookStyle";
 
 import BookItem from "../bookItem/BookItem";
 import Pagination from "../pagination/Pagination";
 import Category from "../category/Category";
+import ErrorPage from "../errorPage/ErrorPage";
 
 import {
   PER_PAGE,
@@ -34,7 +40,7 @@ const SearchBook = () => {
 
   // State
 
-  const { response, error } = useFetch(requestUrl, [
+  const { response } = useFetch(requestUrl, [
     parsedSearchQueries.page,
     parsedSearchQueries.q,
   ]);
@@ -54,7 +60,8 @@ const SearchBook = () => {
         />
       </Loading>
     );
-  if (error) return <div>{error.message}</div>;
+
+  if (!response.statusCode) return <ErrorPage status={response.status} />;
 
   const { bookCount, books, categoryId } = response.data;
   window.scrollTo(0, 0);
@@ -66,25 +73,34 @@ const SearchBook = () => {
         fontColor={colors.white}
         isActive={categoryId && categoryId}
       />
-      <SearchBookWrapper>
-        <SearchBookInner>
-          {books.map((el) => (
-            <BookItem
-              key={el.id}
-              id={el.id}
-              image={el.imageUrl}
-              title={el.title}
-              author={el.author}
-            />
-          ))}
-        </SearchBookInner>
-      </SearchBookWrapper>
-      <Pagination
-        totalItem={bookCount}
-        itemPerPage={PER_PAGE}
-        showPageCount={isMobile}
-        currentPage={Math.max(currentPage, 1)}
-      />
+      {!books.length ? (
+        <NoneResultWrapper>
+          <FcSearch />
+          <h1>검색 결과가 없습니다.</h1>
+        </NoneResultWrapper>
+      ) : (
+        <>
+          <SearchBookWrapper>
+            <SearchBookInner>
+              {books.map((el) => (
+                <BookItem
+                  key={el.id}
+                  id={el.id}
+                  image={el.imageUrl}
+                  title={el.title}
+                  author={el.author}
+                />
+              ))}
+            </SearchBookInner>
+          </SearchBookWrapper>
+          <Pagination
+            totalItem={bookCount}
+            itemPerPage={PER_PAGE}
+            showPageCount={isMobile}
+            currentPage={Math.max(currentPage, 1)}
+          />
+        </>
+      )}
     </>
   );
 };
