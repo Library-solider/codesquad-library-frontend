@@ -2,8 +2,12 @@ import React, { useContext } from "react";
 
 import styled, { ThemeContext } from "styled-components";
 import codesquad_logo from "../../assets/images/codesquad-logo.png";
-import Search from "../search/Search";
 import { Button } from "../../styles/Button";
+
+import Search from "../search/Search";
+
+import { JSESSION_KEY } from "../../constants/cookie";
+import { getCookie } from "../../utils/cookie";
 
 const Navbar = () => {
   const themeContext = useContext(ThemeContext);
@@ -19,7 +23,7 @@ const Navbar = () => {
         fillColor={themeContext.colors.green_1}
         textColor={themeContext.colors.white}
       >
-        <a href="/v1/oauth2/authorization/github">Login</a>
+        <a href={process.env.REACT_APP_OAUTH_PATH}>Login</a>
       </LoginButton>
     </NavbarWrapper>
   );
