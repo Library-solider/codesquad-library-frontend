@@ -7,12 +7,14 @@ import theme from "./styles/theme";
 
 // Default Layout
 import Navbar from "./components/navbar/Navbar";
-import CopyRight from "./components/copyRight/CopyRight";
+import Footer from "./components/Footer/Footer";
 
 // Route Component
 import IntroPage from "./page/IntroPage";
 import DetailBook from "./components/detailBook/DetailBook";
 import SearchBook from "./components/searchBook/SearchBook";
+import RentalHistory from "./components/rentalHistory/RentalHistory";
+import ErrorPage from "./components/errorPage/ErrorPage";
 
 const App = () => {
   return (
@@ -25,8 +27,14 @@ const App = () => {
           <Route path="/books/:id" component={DetailBook} />
           <Route path="/search" component={SearchBook} />
           <Route path="/category/:id" component={SearchBook} />
+          <Route path="/mypage/rentalHistory" component={RentalHistory} />
+          <Route
+            render={() => {
+              return <ErrorPage status={404} />;
+            }}
+          />
         </Switch>
-        <CopyRight />
+        <Footer />
       </ThemeProvider>
     </div>
   );

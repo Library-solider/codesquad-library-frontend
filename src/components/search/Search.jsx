@@ -61,6 +61,7 @@ const Search = () => {
     setHistoryPosition(null);
     addSearchHistory(keyword);
   };
+
   const onKeyDownInput = useCallback(
     (e) => {
       switch (e.key) {
@@ -97,8 +98,10 @@ const Search = () => {
 
   // outSide Click Pattern
   const onBlurSearchHistory = (e) => {
-    if (isToggle && !toggleContainer.current.contains(e.target))
+    if (isToggle && !toggleContainer.current.contains(e.target)) {
+      setHistoryPosition(null);
       setIsToggle(false);
+    }
   };
 
   useEffect(() => {
@@ -107,7 +110,7 @@ const Search = () => {
     } else {
       setKeyword(searchHistory[historyPosition]);
     }
-  }, [historyPosition, searchHistory]);
+  }, [historyPosition]);
 
   useEffect(() => {
     if (parsedSearchQueries.q) {
