@@ -22,9 +22,9 @@ CodeSquad에 있는 책들의 정보를 확인할 수 있으며 대여할 수 �
 
 ## 주요 기능
 
-- (Pagination)[https://github.com/Library-solider/codesquad-library-frontend/wiki/%5BLibrary-Project%5D-Pagination]
-- (Responsive Web)[https://github.com/Library-solider/codesquad-library-frontend/wiki/%5BLibrary-Project%5D-Responsive-Web]
-- (Search)[https://github.com/Library-solider/codesquad-library-frontend/wiki/%5BLibrary-Project%5D-Search-History]
+- [Pagination](https://github.com/Library-solider/codesquad-library-frontend/wiki/%5BLibrary-Project%5D-Pagination)
+- [Responsive Web](https://github.com/Library-solider/codesquad-library-frontend/wiki/%5BLibrary-Project%5D-Responsive-Web)
+- [Search](https://github.com/Library-solider/codesquad-library-frontend/wiki/%5BLibrary-Project%5D-Search-History)
 
 ## 사용 기술
 
