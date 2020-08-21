@@ -1,7 +1,3 @@
 export const createRequestUrl = (location) => {
-  return (
-    "https://d3e9fjannntuih.cloudfront.net/v1" +
-    location.pathname +
-    location.search
-  );
+  return "http://3.34.7.107/v1" + location.pathname + location.search;
 };

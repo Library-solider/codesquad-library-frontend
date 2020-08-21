@@ -7,10 +7,10 @@ import { Loading } from "../../styles/Loading";
 import BookCarousel from "./BookCarousel";
 import ErrorPage from "../errorPage/ErrorPage";
 
-const MAIN_API = "https://d3e9fjannntuih.cloudfront.net/v1/main";
+const MAIN_API = "http://3.34.7.107/v1/main";
 
 const IntroBooks = () => {
-  const { response } = useFetch(MAIN_API, []);
+  const { response, error } = useFetch(MAIN_API, []);
 
   if (!response)
     return (
@@ -25,15 +25,20 @@ const IntroBooks = () => {
 
   return (
     <IntroBooksWrapper>
-      {response.data.map((el) => {
-        return <BookCarousel key={el.categoryId} {...el} />;
-      })}
+      {response &&
+        response.data.map((el) => {
+          return <BookCarousel key={el.categoryId} {...el} />;
+        })}
     </IntroBooksWrapper>
   );
 };
 
 const IntroBooksWrapper = styled.div`
   width: 100%;
+
+  :empty {
+    height: 100vh;
+  }
 `;
 
 export default IntroBooks;
