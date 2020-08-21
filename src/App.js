@@ -16,6 +16,10 @@ import SearchBook from "./components/searchBook/SearchBook";
 import RentalHistory from "./components/rentalHistory/RentalHistory";
 import ErrorPage from "./components/errorPage/ErrorPage";
 
+// test code
+
+import Skeleton from "./components/Skeleton";
+
 const App = () => {
   return (
     <div>
@@ -28,6 +32,7 @@ const App = () => {
           <Route path="/search" component={SearchBook} />
           <Route path="/category/:id" component={SearchBook} />
           <Route path="/mypage/rentalHistory" component={RentalHistory} />
+          <Route path="/testpage" component={Skeleton} />
           <Route
             render={() => {
               return <ErrorPage status={404} />;
