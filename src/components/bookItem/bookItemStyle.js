@@ -62,3 +62,11 @@ export const BookItemWrapper = styled.div`
     }
   }
 `;
+
+export const NoneImage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  height: 10rem;
+`;
