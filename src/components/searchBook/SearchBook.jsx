@@ -3,9 +3,6 @@ import { useHistory } from "react-router-dom";
 import { useIsMobile } from "../../hooks/useMediaQuery";
 import querystring from "query-string";
 
-import { ThemeContext } from "styled-components";
-import { FcSearch } from "react-icons/fc";
-import { Loading } from "../../styles/Loading";
 import {
   SearchBookWrapper,
   SearchBookInner,
@@ -14,8 +11,8 @@ import {
 
 import BookItem from "../bookItem/BookItem";
 import Pagination from "../pagination/Pagination";
-import Category from "../category/Category";
 import ErrorPage from "../errorPage/ErrorPage";
+import Loading from "../Loading";
 
 import {
   PER_PAGE,
@@ -25,7 +22,7 @@ import {
 } from "../../constants/searchBook";
 
 import { createRequestUrl } from "../../utils/url";
-import { useFetch } from "../../hooks/useFetch";
+import { useFetch, useFetch_2 } from "../../hooks/useFetch";
 
 const SearchBook = () => {
   // hook
@@ -39,50 +36,29 @@ const SearchBook = () => {
     : MIN_PAGINATION;
 
   // State
-
-  const { response } = useFetch(requestUrl, [
+  const { response, error, isLoading } = useFetch_2(requestUrl, {}, [
     parsedSearchQueries.page,
     parsedSearchQueries.q,
   ]);
-  const themeContext = useContext(ThemeContext);
-  const { colors } = themeContext;
 
   const isMobile = useIsMobile()
     ? SHOW_PAGE_COUNT_MOBILE
     : SHOW_PAGE_COUNT_DESKTOP;
 
-  if (!response)
-    return (
-      <Loading>
-        <img
-          src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
-          alt=""
-        />
-      </Loading>
-    );
+  if (!response) return <Loading />;
+  if (error) return <ErrorPage status={response.status} />;
 
-  if (!response.statusCode) return <ErrorPage status={response.status} />;
-
-  const { bookCount, books, categoryId } = response.data;
   window.scrollTo(0, 0);
 
   return (
     <>
-      <Category
-        fillColor={colors.gray_1}
-        fontColor={colors.white}
-        isActive={categoryId && categoryId}
-      />
-      {!books.length ? (
-        <NoneResultWrapper>
-          <FcSearch />
-          <h1>검색 결과가 없습니다.</h1>
-        </NoneResultWrapper>
+      {isLoading ? (
+        <Loading />
       ) : (
         <>
           <SearchBookWrapper>
             <SearchBookInner>
-              {books.map((el) => (
+              {response.data.books.map((el) => (
                 <BookItem
                   key={el.id}
                   id={el.id}
@@ -94,7 +70,7 @@ const SearchBook = () => {
             </SearchBookInner>
           </SearchBookWrapper>
           <Pagination
-            totalItem={bookCount}
+            totalItem={response.data.bookCount}
             itemPerPage={PER_PAGE}
             showPageCount={isMobile}
             currentPage={Math.max(currentPage, 1)}
@@ -106,3 +82,8 @@ const SearchBook = () => {
 };
 
 export default SearchBook;
+
+// <NoneResultWrapper>
+//   <FcSearch />
+//   <h1>검색 결과가 없습니다.</h1>
+// </NoneResultWrapper>

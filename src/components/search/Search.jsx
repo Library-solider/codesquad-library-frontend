@@ -139,7 +139,7 @@ const Search = () => {
     <SearchForm ref={toggleContainer}>
       <input
         type="text"
-        placeholder="원하는 책의 제목을 검색해 보세요 !"
+        placeholder="원하는 책의 제목,저자를 검색해 보세요 !"
         onFocus={onFocusInput}
         onKeyDown={onKeyDownInput}
         onChange={onChangeInput}

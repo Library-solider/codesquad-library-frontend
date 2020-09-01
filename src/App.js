@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, ThemeContext } from "styled-components";
 import { GlobalStyle } from "./styles/GlobalStyle";
 import theme from "./styles/theme";
 
@@ -15,24 +15,25 @@ import DetailBook from "./components/detailBook/DetailBook";
 import SearchBook from "./components/searchBook/SearchBook";
 import RentalHistory from "./components/rentalHistory/RentalHistory";
 import ErrorPage from "./components/errorPage/ErrorPage";
+import Category from "./components/category/Category";
 
 // test code
 
-import Skeleton from "./components/Skeleton";
-
+import Test from "./components/Test";
 const App = () => {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Navbar />
+        <Category />
         <Switch>
           <Route path="/" component={IntroPage} exact={true} />
           <Route path="/books/:id" component={DetailBook} />
           <Route path="/search" component={SearchBook} />
           <Route path="/category/:id" component={SearchBook} />
           <Route path="/mypage/rentalHistory" component={RentalHistory} />
-          <Route path="/testpage" component={Skeleton} />
+          <Route path="/testpage" component={Test} />
           <Route
             render={() => {
               return <ErrorPage status={404} />;

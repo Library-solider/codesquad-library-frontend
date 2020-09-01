@@ -18,4 +18,9 @@ export const CarouselWrapper = styled.div`
     margin: ${({ theme: { margins } }) => margins.small};
     font-size: ${({ theme: { fontSizes } }) => fontSizes.xxxl};
   }
+
+  .slick-prev:before,
+  .slick-next:before {
+    color: black;
+  }
 `;
