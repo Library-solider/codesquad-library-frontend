@@ -1,18 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-
+import { useHistory } from "react-router-dom";
 import { CATEGORY_LIST_DATA } from "../../constants/category";
 
-const Category = ({ fillColor, fontColor, isActive }) => {
+const Category = () => {
+  const history = useHistory();
+  const currentPath = history.location.pathname;
+
   return (
-    <CategoryWrapper fillColor={fillColor} fontColor={fontColor}>
+    <CategoryWrapper>
       <CategoryInner>
         {CATEGORY_LIST_DATA.map((el, idx) => {
           return (
             <CategoryLink
               key={idx}
               href={el.HREF}
-              isActive={isActive === el.CATEGORY_ID ? true : false}
+              isActive={currentPath === el.HREF ? true : false}
             >
               <el.ICON />
               <div>{el.CATEGORY_TITLE}</div>
@@ -29,9 +32,10 @@ const CategoryWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   background-color: ${(props) => props.fillColor};
+  background-color: ${({ theme: { colors } }) => colors.gray_1};
   svg,
   div {
-    color: ${(props) => props.fontColor};
+    color: ${({ theme: { colors } }) => colors.white};
   }
 `;
 

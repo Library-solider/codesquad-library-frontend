@@ -10,7 +10,12 @@ const BookItem = ({ id, image, title, author }) => {
         {image ? (
           <img className="book-image" src={image} alt="book cover" />
         ) : (
-          <NoneImage>이미지 준비중🥺</NoneImage>
+          <NoneImage>
+            이미지 준비중
+            <span role="img" aria-labelledby="none image">
+              🥺
+            </span>
+          </NoneImage>
         )}
 
         <div className="book_title">{title}</div>
