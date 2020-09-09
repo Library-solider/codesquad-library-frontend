@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import decode from "jwt-decode";
+import { useFetch } from "../../hooks/useFetch";
 
 import styled, { ThemeContext } from "styled-components";
 import codesquad_logo from "../../assets/images/codesquad-logo.png";
@@ -7,15 +7,17 @@ import { Button } from "../../styles/Button";
 
 import Search from "../search/Search";
 
+import { GET_OPTION } from "../../constants/fetch";
+
+const PROFILE_URL = "http://backend.librarycodesquad.com/v1/users/profile";
+
 const Navbar = () => {
   const themeContext = useContext(ThemeContext);
-  const [userName, setUserName] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
 
-  useEffect(() => {
-    fetch("http://backend.librarycodesquad.com/v1/users/profile")
-      .then((response) => response.json())
-      .then((fetchData) => setUserName(fetchData.data.name));
-  }, []);
+  const { response, error } = useFetch(PROFILE_URL, GET_OPTION);
+
+  useEffect(() => {}, []);
 
   return (
     <NavbarWrapper>
@@ -28,9 +30,7 @@ const Navbar = () => {
         style={{
           color: "white",
         }}
-      >
-        {userName && userName}
-      </div>
+      ></div>
       <LoginButton
         fillColor={themeContext.colors.green_1}
         textColor={themeContext.colors.white}

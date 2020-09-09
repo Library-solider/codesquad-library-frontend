@@ -10,7 +10,7 @@ import ErrorPage from "../errorPage/ErrorPage";
 const MAIN_API = "http://backend.librarycodesquad.com/v1/main";
 
 const IntroBooks = () => {
-  const { response } = useFetch(MAIN_API, []);
+  const { response } = useFetch(MAIN_API, null);
 
   if (!response)
     return (

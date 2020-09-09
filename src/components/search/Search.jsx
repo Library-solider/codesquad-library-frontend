@@ -110,7 +110,7 @@ const Search = () => {
     } else {
       setKeyword(searchHistory[historyPosition]);
     }
-  }, [historyPosition]);
+  }, [historyPosition, searchHistory]);
 
   useEffect(() => {
     if (parsedSearchQueries.q) {
