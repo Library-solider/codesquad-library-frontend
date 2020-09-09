@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { useIsMobile } from "../../hooks/useMediaQuery";
 import querystring from "query-string";
 
-import {
-  SearchBookWrapper,
-  SearchBookInner,
-  NoneResultWrapper,
-} from "./searchBookStyle";
+import { SearchBookWrapper, SearchBookInner } from "./searchBookStyle";
 
 import BookItem from "../bookItem/BookItem";
 import Pagination from "../pagination/Pagination";
@@ -22,7 +18,7 @@ import {
 } from "../../constants/searchBook";
 
 import { createRequestUrl } from "../../utils/url";
-import { useFetch, useFetch_2 } from "../../hooks/useFetch";
+import { useBooksFetch } from "../../hooks/useFetch";
 
 const SearchBook = () => {
   // hook
@@ -36,17 +32,14 @@ const SearchBook = () => {
     : MIN_PAGINATION;
 
   // State
-  const { response, error, isLoading } = useFetch_2(requestUrl, {}, [
-    parsedSearchQueries.page,
-    parsedSearchQueries.q,
-  ]);
+  const { response, error, isLoading } = useBooksFetch(requestUrl, null);
 
   const isMobile = useIsMobile()
     ? SHOW_PAGE_COUNT_MOBILE
     : SHOW_PAGE_COUNT_DESKTOP;
 
-  if (!response) return <Loading />;
   if (error) return <ErrorPage status={response.status} />;
+  if (!response) return <Loading />;
 
   window.scrollTo(0, 0);
 
@@ -82,8 +75,3 @@ const SearchBook = () => {
 };
 
 export default SearchBook;
-
-// <NoneResultWrapper>
-//   <FcSearch />
-//   <h1>검색 결과가 없습니다.</h1>
-// </NoneResultWrapper>

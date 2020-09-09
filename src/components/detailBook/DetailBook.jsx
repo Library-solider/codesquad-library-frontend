@@ -13,7 +13,8 @@ const DB_HOST = "http://backend.librarycodesquad.com/v1";
 const DetailBook = () => {
   const history = useHistory();
   const requestUrl = DB_HOST + history.location.pathname;
-  const { response, error } = useFetch(requestUrl, []);
+
+  const { response, error } = useFetch(requestUrl, null);
 
   if (!response)
     return (
