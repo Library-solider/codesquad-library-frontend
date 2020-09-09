@@ -6,7 +6,6 @@ import { Button } from "../../styles/Button";
 import Modal from "../modal/Modal";
 
 const BookInfomation = (props) => {
-  console.log(props);
   const {
     title,
     imageUrl,
