@@ -9,19 +9,25 @@ import Search from "../search/Search";
 
 import { GET_OPTION } from "../../constants/fetch";
 
+const OAUTH_LINK =
+  "http://backend.librarycodesquad.com/oauth2/authorization/github";
 const PROFILE_URL = "http://backend.librarycodesquad.com/v1/users/profile";
 
 const Navbar = () => {
   const themeContext = useContext(ThemeContext);
+
   const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
-
-  // const { response, error } = useFetch(PROFILE_URL, GET_OPTION);
 
   useEffect(() => {
     fetch(PROFILE_URL, GET_OPTION)
       .then((res) => res.json())
-      .then((data) => data.data && setIsLogin(true));
+      .then((data) => {
+        if (data.data) {
+          setIsLogin(true);
+          setUserInfo(data.data);
+        }
+      });
   }, []);
 
   return (
@@ -32,25 +38,15 @@ const Navbar = () => {
       <Search />
 
       {isLogin ? (
-        <div
-          style={{
-            color: "white",
-          }}
-        >
-          ON
+        <div className="user-info">
+          <img src={userInfo.avatarUrl} alt="user image" />
         </div>
       ) : (
         <LoginButton
           fillColor={themeContext.colors.green_1}
           textColor={themeContext.colors.white}
         >
-          <a
-            href={
-              "http://backend.librarycodesquad.com/oauth2/authorization/github"
-            }
-          >
-            Login
-          </a>
+          <a href={OAUTH_LINK}>Login</a>
         </LoginButton>
       )}
     </NavbarWrapper>
@@ -66,6 +62,13 @@ const NavbarWrapper = styled.div`
   padding: ${({ theme }) => theme.paddings.xl};
   font-size: ${({ theme }) => theme.fontSizes.base};
   background-color: ${({ theme: { colors } }) => colors.gray_1};
+
+  .user-info {
+    img {
+      width: 4.5rem;
+      border-radius: 50%;
+    }
+  }
 `;
 
 const LoginButton = styled(Button)`
