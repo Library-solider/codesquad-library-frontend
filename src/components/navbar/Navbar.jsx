@@ -24,8 +24,8 @@ const Navbar = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.data) {
-          setIsLogin(true);
           setUserInfo(data.data);
+          setIsLogin(true);
         }
       });
   }, []);
