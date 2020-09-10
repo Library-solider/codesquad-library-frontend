@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useFetch } from "../../hooks/useFetch";
+// import { useFetch } from "../../hooks/useFetch";
 
 import styled, { ThemeContext } from "styled-components";
 import codesquad_logo from "../../assets/images/codesquad-logo.png";
@@ -14,10 +14,15 @@ const PROFILE_URL = "http://backend.librarycodesquad.com/v1/users/profile";
 const Navbar = () => {
   const themeContext = useContext(ThemeContext);
   const [isLogin, setIsLogin] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
 
-  const { response, error } = useFetch(PROFILE_URL, GET_OPTION);
+  // const { response, error } = useFetch(PROFILE_URL, GET_OPTION);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetch(PROFILE_URL, GET_OPTION)
+      .then((res) => res.json())
+      .then((data) => data.data && setIsLogin(true));
+  }, []);
 
   return (
     <NavbarWrapper>
@@ -26,23 +31,28 @@ const Navbar = () => {
       </Logo>
       <Search />
 
-      <div
-        style={{
-          color: "white",
-        }}
-      ></div>
-      <LoginButton
-        fillColor={themeContext.colors.green_1}
-        textColor={themeContext.colors.white}
-      >
-        <a
-          href={
-            "http://backend.librarycodesquad.com/oauth2/authorization/github"
-          }
+      {isLogin ? (
+        <div
+          style={{
+            color: "white",
+          }}
         >
-          Login
-        </a>
-      </LoginButton>
+          ON
+        </div>
+      ) : (
+        <LoginButton
+          fillColor={themeContext.colors.green_1}
+          textColor={themeContext.colors.white}
+        >
+          <a
+            href={
+              "http://backend.librarycodesquad.com/oauth2/authorization/github"
+            }
+          >
+            Login
+          </a>
+        </LoginButton>
+      )}
     </NavbarWrapper>
   );
 };
