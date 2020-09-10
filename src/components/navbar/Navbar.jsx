@@ -65,7 +65,7 @@ const NavbarWrapper = styled.div`
 
   .user-info {
     img {
-      width: 4.5rem;
+      width: 2.5rem;
       border-radius: 50%;
     }
   }
