@@ -31,7 +31,6 @@ export const useBooksFetch = (url, options) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    console.log("hello");
     const fetchData = async () => {
       setIsLoading(true);
       try {
