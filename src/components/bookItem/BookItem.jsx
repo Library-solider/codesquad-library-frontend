@@ -1,23 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { BookItemWrapper, NoneImage } from "./bookItemStyle";
+import { BookItemWrapper } from "./bookItemStyle";
+import image_ready from "../../assets/images/image-ready.png";
 
 const BookItem = ({ id, image, title, author }) => {
+  const bookImage = image ? image : image_ready;
+
   return (
     <BookItemWrapper className="book_item">
+      <div className="testing" />
       <NavLink to={`/books/${id}`}>
-        {image ? (
-          <img className="book-image" src={image} alt="book cover" />
-        ) : (
-          <NoneImage>
-            이미지 준비중
-            <span role="img" aria-labelledby="none image">
-              🥺
-            </span>
-          </NoneImage>
-        )}
-
+        <img className="book-image" src={bookImage} alt="book cover" />
         <div className="book_title">{title}</div>
         <div className="author">{author}</div>
       </NavLink>

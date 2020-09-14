@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 
 import { DetailWrapper, DetailInner } from "./detailStyle";
-import { Loading } from "../../styles/Loading";
 
 import BookInfomation from "./BookInfomation";
 import BookDescription from "./BookDescription";
+import Loading from "../Loading";
 
 const DB_HOST = "http://backend.librarycodesquad.com/v1";
 
@@ -16,16 +16,8 @@ const DetailBook = () => {
 
   const { response, error } = useFetch(requestUrl, null);
 
-  if (!response)
-    return (
-      <Loading>
-        <img
-          src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
-          alt=""
-        />
-      </Loading>
-    );
   if (error) return <div>{error.message}</div>;
+  if (!response) return <Loading />;
 
   return (
     <DetailWrapper>
