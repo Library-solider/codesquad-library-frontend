@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-// import { useFetch } from "../../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 import styled, { ThemeContext } from "styled-components";
 import codesquad_logo from "../../assets/images/codesquad-logo.png";
@@ -32,14 +32,14 @@ const Navbar = () => {
 
   return (
     <NavbarWrapper>
-      <Logo href="/">
+      <Link to="/" className="logo">
         <img src={codesquad_logo} alt="codesquad logo" />
-      </Logo>
+      </Link>
       <Search />
 
       {isLogin ? (
         <div className="user-info">
-          <img src={userInfo.avatarUrl} alt="user image" />
+          <img src={userInfo.avatarUrl} alt="user logo" />
         </div>
       ) : (
         <LoginButton
@@ -69,19 +69,19 @@ const NavbarWrapper = styled.div`
       border-radius: 50%;
     }
   }
+
+  .logo {
+    cursor: pointer;
+    img {
+      width: 4.5rem;
+      height: 3.5rem;
+    }
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+  }
 `;
 
 const LoginButton = styled(Button)`
   order: 1;
-`;
-
-const Logo = styled.a`
-  cursor: pointer;
-  img {
-    width: 4.5rem;
-    height: 3.5rem;
-  }
-  font-size: ${({ theme }) => theme.fontSizes.xl};
 `;
 
 export default Navbar;
