@@ -6,17 +6,20 @@ export const SearchForm = styled.div`
   position: relative;
 
   input {
+    position: relative;
     width: inherit;
     padding: ${({ theme: { paddings } }) => paddings.lg};
-    border-top-left-radius: ${({ theme: { radius } }) => radius.xSmall};
-    border-bottom-left-radius: ${({ theme: { radius } }) => radius.xSmall};
+    border-radius: ${({ theme: { radius } }) => radius.xSmall};
   }
 
   .search_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
     padding-right: ${({ theme: { paddings } }) => paddings.small};
     background-color: ${({ theme: { colors } }) => colors.white};
-    border-top-right-radius: ${({ theme: { radius } }) => radius.xSmall};
-    border-bottom-right-radius: ${({ theme: { radius } }) => radius.xSmall};
+    border-radius: ${({ theme: { radius } }) => radius.xSmall};
 
     svg {
       font-size: ${({ theme: { fontSizes } }) => fontSizes.xxxl};

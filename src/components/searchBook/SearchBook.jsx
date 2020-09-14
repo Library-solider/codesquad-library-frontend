@@ -3,12 +3,18 @@ import { useHistory } from "react-router-dom";
 import { useIsMobile } from "../../hooks/useMediaQuery";
 import querystring from "query-string";
 
-import { SearchBookWrapper, SearchBookInner } from "./searchBookStyle";
+import {
+  SearchBookWrapper,
+  SearchBookInner,
+  ItemPlaceholder,
+} from "./searchBookStyle";
 
 import BookItem from "../bookItem/BookItem";
 import Pagination from "../pagination/Pagination";
 import ErrorPage from "../errorPage/ErrorPage";
+
 import Loading from "../Loading";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 import {
   PER_PAGE,

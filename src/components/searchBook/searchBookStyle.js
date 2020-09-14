@@ -5,6 +5,10 @@ export const SearchBookWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: ${({ theme: { margins } }) => margins.xxxl};
+
+  :empty {
+    height: 100vh;
+  }
 `;
 
 export const SearchBookInner = styled.div`
@@ -48,4 +52,11 @@ export const NoneResultWrapper = styled.div`
     color: ${({ theme: { colors } }) => colors.gray_2};
     font-weight: bold;
   }
+`;
+
+export const ItemPlaceholder = styled.div`
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  background-color: gray;
 `;

@@ -21,12 +21,10 @@ const Search = () => {
   const [searchHistory, updateSearchHistory] = useState(() => {
     const history = localStorage.getItem(LOCALSTORAGE_KEYS.SEARCH_HISTORY);
 
-    if (history) {
-      return JSON.parse(history);
-    } else {
-      return [];
-    }
+    if (history) return JSON.parse(history);
+    if (!history) return [];
   });
+
   const parsedSearchQueries = querystring.parse(history.location.search);
 
   // localStorage Event
