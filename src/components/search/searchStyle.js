@@ -18,7 +18,7 @@ export const SearchForm = styled.div`
     right: 0;
     height: 100%;
     padding-right: ${({ theme: { paddings } }) => paddings.small};
-    background-color: ${({ theme: { colors } }) => colors.white};
+    /* background-color: ${({ theme: { colors } }) => colors.white}; */
     border-radius: ${({ theme: { radius } }) => radius.xSmall};
 
     svg {
