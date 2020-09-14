@@ -38,9 +38,8 @@ const LoadingWrapper = styled.div`
 `;
 
 const LoadingEmpty = styled.div`
-  :empty {
-    height: 100vh;
-  }
+  height: 100vh;
+  width: 100%;
 `;
 
 export default Loading;
