@@ -5,6 +5,8 @@ import { BookInfomationWrapper, IsRental } from "./detailStyle";
 import { Button } from "../../styles/Button";
 import Modal from "../modal/Modal";
 
+import image_ready from "../../assets/images/image-ready.png";
+
 const BookInfomation = (props) => {
   const {
     title,
@@ -25,7 +27,12 @@ const BookInfomation = (props) => {
   return (
     <BookInfomationWrapper>
       <div className="book_image rental">
-        <img src={imageUrl} alt={title} />
+        {imageUrl ? (
+          <img src={imageUrl} alt={title} />
+        ) : (
+          <img src={image_ready} alt={title} />
+        )}
+
         <RentalButton
           onClick={onClickRentalBtn}
           fillColor={colors.green_1}
