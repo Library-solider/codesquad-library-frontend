@@ -1,18 +1,10 @@
 import { createGlobalStyle, css } from "styled-components";
-import { Reset } from "styled-reset";
+import reset from "styled-reset";
 
-const font = css`
-  @font-face {
-    font-family: "RIDIBatang";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
+const font = css``;
 
 export const GlobalStyle = createGlobalStyle`
-  ${Reset};
+  ${reset};
   ${font};
 
   * {
@@ -22,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     position : relative;
+    overflow-x : hidden;
     min-height: 100%;
   }
 
