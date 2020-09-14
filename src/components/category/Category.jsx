@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
+
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
 import { CATEGORY_LIST_DATA } from "../../constants/category";
 
 const Category = () => {
-  const history = useHistory();
-  const currentPath = history.location.pathname;
+  let location = useLocation();
+  const [currentPath, setCurrentPath] = useState(null);
+
+  useEffect(() => {
+    setCurrentPath(location.pathname);
+  }, [location]);
 
   return (
     <CategoryWrapper>
       <CategoryInner>
         {CATEGORY_LIST_DATA.map((el, idx) => {
           return (
-            <CategoryLink
-              key={idx}
-              href={el.HREF}
-              isActive={currentPath === el.HREF ? true : false}
-            >
-              <el.ICON />
-              <div>{el.CATEGORY_TITLE}</div>
-            </CategoryLink>
+            <Link to={el.HREF}>
+              <CategoryLink
+                key={idx}
+                isActive={currentPath === el.HREF ? true : false}
+              >
+                <el.ICON />
+                <div>{el.CATEGORY_TITLE}</div>
+              </CategoryLink>
+            </Link>
           );
         })}
       </CategoryInner>
@@ -50,7 +58,7 @@ const CategoryInner = styled.div`
   }
 `;
 
-const CategoryLink = styled.a`
+const CategoryLink = styled.div`
   cursor: pointer;
   font-weight: bold;
   text-align: center;
