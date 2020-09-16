@@ -8,7 +8,7 @@ import BookInfomation from "./BookInfomation";
 import BookDescription from "./BookDescription";
 import Loading from "../Loading";
 
-const DB_HOST = "http://backend.librarycodesquad.com/v1";
+const DB_HOST = "https://backend.librarycodesquad.com/v1";
 
 const DetailBook = () => {
   const history = useHistory();
