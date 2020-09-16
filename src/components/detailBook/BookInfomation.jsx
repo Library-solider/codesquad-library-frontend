@@ -4,6 +4,7 @@ import { BookInfomationWrapper, IsRental } from "./detailStyle";
 
 import { Button } from "../../styles/Button";
 import Modal from "../modal/Modal";
+import RentalModal from "./RentalModal";
 
 import image_ready from "../../assets/images/image-ready.png";
 
@@ -41,7 +42,11 @@ const BookInfomation = (props) => {
         >
           대여하기
         </RentalButton>
-        {rentalClosed && <Modal onCloseModal={onClickRentalBtn} />}
+        {rentalClosed && (
+          <Modal>
+            <RentalModal onCloseModal={onClickRentalBtn} />
+          </Modal>
+        )}
       </div>
       <div className="book_detail_info">
         <h3 className="title">{title}</h3>
