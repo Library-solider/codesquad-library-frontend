@@ -1,9 +1,19 @@
 export const GET_OPTION = {
   method: "GET",
+  cache: "no-cache",
+  credentials: "include",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
-    Cache: "no-cache",
   },
+};
+
+export const POST_OPTION = {
+  method: "POST",
+  cache: "no-cache",
   credentials: "include",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
 };
