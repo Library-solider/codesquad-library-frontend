@@ -44,16 +44,14 @@ const SearchBook = () => {
     ? SHOW_PAGE_COUNT_MOBILE
     : SHOW_PAGE_COUNT_DESKTOP;
 
-  if (error) return <ErrorPage status={response.status} />;
+  if (error) return <ErrorPage status={error.status} />;
   if (!response) return <Loading />;
 
   window.scrollTo(0, 0);
 
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
+      {isLoading && (
         <>
           <SearchBookWrapper>
             <SearchBookInner>

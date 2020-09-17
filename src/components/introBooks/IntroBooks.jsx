@@ -10,10 +10,10 @@ import Loading from "../Loading";
 const MAIN_API = "https://backend.librarycodesquad.com/v1/main";
 
 const IntroBooks = () => {
-  const { response } = useFetch(MAIN_API, null);
+  const { response, error } = useFetch(MAIN_API, null);
 
+  if (error) return <ErrorPage status={error.status} />;
   if (!response) return <Loading />;
-  if (!response.statusCode) return <ErrorPage status={response.status} />;
 
   return (
     <IntroBooksWrapper>
