@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const BookItemWrapper = styled.div`
   width: 100%;
-  height: 28rem;
 
   padding: ${({ theme: { paddings } }) => paddings.small};
   display: flex;

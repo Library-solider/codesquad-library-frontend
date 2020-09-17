@@ -2,26 +2,18 @@ import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 
 import styled from "styled-components";
-import { Loading } from "../../styles/Loading";
 
 import BookCarousel from "./BookCarousel";
 import ErrorPage from "../errorPage/ErrorPage";
+import Loading from "../Loading";
 
-const MAIN_API = "http://backend.librarycodesquad.com/v1/main";
+const MAIN_API = "https://backend.librarycodesquad.com/v1/main";
 
 const IntroBooks = () => {
-  const { response } = useFetch(MAIN_API, null);
+  const { response, error } = useFetch(MAIN_API, null);
 
-  if (!response)
-    return (
-      <Loading>
-        <img
-          src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
-          alt="Loading gif"
-        />
-      </Loading>
-    );
-  if (!response.statusCode) return <ErrorPage status={response.status} />;
+  if (error) return <ErrorPage status={error.status} />;
+  if (!response) return <Loading />;
 
   return (
     <IntroBooksWrapper>

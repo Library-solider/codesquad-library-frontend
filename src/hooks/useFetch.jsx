@@ -11,11 +11,16 @@ export const useFetch = (url, option) => {
       try {
         const response = await fetch(url, option);
         const initialData = await response.json();
-        setResponse(initialData);
+        if (initialData.status !== true) {
+          throw initialData;
+        } else {
+          setResponse(initialData);
+        }
       } catch (error) {
         setError(error);
       }
     };
+
     initialFetch();
   }, [url, option]);
 
@@ -32,13 +37,20 @@ export const useBooksFetch = (url, options) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
+      setError(null);
+      setIsLoading(false);
       try {
         const res = await fetch(url, options);
         const json = await res.json();
-        setResponse(json);
-        setIsLoading(false);
+
+        if (json.status !== true) {
+          throw json;
+        } else {
+          setResponse(json);
+          setIsLoading(true);
+        }
       } catch (error) {
+        setIsLoading(true);
         setError(error);
       }
     };

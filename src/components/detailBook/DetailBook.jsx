@@ -7,8 +7,9 @@ import { DetailWrapper, DetailInner } from "./detailStyle";
 import BookInfomation from "./BookInfomation";
 import BookDescription from "./BookDescription";
 import Loading from "../Loading";
+import ErrorPage from "../errorPage/ErrorPage";
 
-const DB_HOST = "http://backend.librarycodesquad.com/v1";
+const DB_HOST = "https://backend.librarycodesquad.com/v1";
 
 const DetailBook = () => {
   const history = useHistory();
@@ -16,7 +17,7 @@ const DetailBook = () => {
 
   const { response, error } = useFetch(requestUrl, null);
 
-  if (error) return <div>{error.message}</div>;
+  if (error) return <ErrorPage status={error.status} />;
   if (!response) return <Loading />;
 
   return (

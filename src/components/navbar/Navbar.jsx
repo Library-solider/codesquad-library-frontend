@@ -10,8 +10,8 @@ import Search from "../search/Search";
 import { GET_OPTION } from "../../constants/fetch";
 
 const OAUTH_LINK =
-  "http://backend.librarycodesquad.com/oauth2/authorization/github";
-const PROFILE_URL = "http://backend.librarycodesquad.com/v1/users/profile";
+  "https://backend.librarycodesquad.com/oauth2/authorization/github";
+const PROFILE_URL = "https://backend.librarycodesquad.com/v1/users/profile";
 
 const Navbar = () => {
   const themeContext = useContext(ThemeContext);

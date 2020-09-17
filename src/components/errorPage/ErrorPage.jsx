@@ -9,11 +9,16 @@ const ErrorPage = ({ status }) => {
         <>
           <FcDeleteRow />
           <h1>
-            요청하신 페이지가 없습니다.
-            <br />
-            입력하신 주소를 확인해 주세요.
+            {status} <br />
+            페이지를 찾을 수 없습니다.
           </h1>
           <a href="/">홈으로 돌아가기</a>
+        </>
+      )}
+      {status >= 500 && (
+        <>
+          {500} <br />
+          <h1>일시적인 오류가 발생했습니다.</h1>
         </>
       )}
     </NotFoundPageWrapper>
