@@ -19,10 +19,7 @@ const RentalModal = ({ onCloseModal }) => {
         POST_OPTION
       );
       const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (
