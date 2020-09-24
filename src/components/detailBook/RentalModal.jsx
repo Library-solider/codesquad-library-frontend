@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import styled, { ThemeContext } from "styled-components";
@@ -11,6 +11,7 @@ import { POST_OPTION } from "../../constants/fetch";
 const RentalModal = ({ onCloseModal }) => {
   const history = useHistory();
   const themeContext = useContext(ThemeContext);
+  const [errorResponse, setErrorResponse] = useState(false);
 
   const onClickRental = async () => {
     try {
@@ -19,31 +20,51 @@ const RentalModal = ({ onCloseModal }) => {
         POST_OPTION
       );
       const data = await response.json();
-    } catch (error) {}
+
+      if (data.status !== 200) throw data;
+      if (data.status === 200) history.push("/");
+    } catch (error) {
+      setErrorResponse(error);
+    }
   };
 
   return (
     <RentalModalWrapper>
-      <header>
-        <div className="title">대여 주의사항</div>
-        <IoMdCloseCircle onClick={onCloseModal} />
-      </header>
-      <ul>
-        <li>1.인당 최대 3권까지 대여 가능합니다.</li>
-        <li>2.대여 기간은 14일 입니다.</li>
-        <li>3.14일 이상의 대여는 반납 후 재대여로 가능합니다.</li>
-        <li>4.대여에 대한 파손/분실에 대해서는 개인의 책임이 있습니다.</li>
-        <li>5.반납은 다음 사람을 위해서 원래 위치에 반납 부탁드립니다.</li>
-      </ul>
-      <footer>
-        <RentalButton
-          fillColor={themeContext.colors.green_1}
-          textColor={themeContext.colors.white}
-          onClick={onClickRental}
-        >
-          대여 완료
-        </RentalButton>
-      </footer>
+      {errorResponse ? (
+        <>
+          <header>
+            <div className="title">Error</div>
+            <IoMdCloseCircle onClick={onCloseModal} />
+          </header>
+          <div className="error-message">{errorResponse.message}</div>
+        </>
+      ) : (
+        <>
+          <header>
+            <div className="title">대여 주의사항</div>
+            <IoMdCloseCircle onClick={onCloseModal} />
+          </header>
+          <ul>
+            <li>1.인당 최대 3권까지 대여 가능합니다.</li>
+            <li>2.대여 기간은 14일 입니다.</li>
+            <li>3.14일 이상의 대여는 반납 후 재대여로 가능합니다.</li>
+            <li>4.대여에 대한 파손/분실에 대해서는 개인의 책임이 있습니다.</li>
+            <li>
+              5.반납은 다음 사람을 위해서 원래 위치에 반납 후 내서재에서 반납
+              신청을 부탁드립니다.
+            </li>
+          </ul>
+          <footer>
+            <RentalButton
+              fillColor={themeContext.colors.green_1}
+              textColor={themeContext.colors.white}
+              onClick={onClickRental}
+            >
+              대여 완료
+            </RentalButton>
+          </footer>
+        </>
+      )}
     </RentalModalWrapper>
   );
 };
@@ -54,6 +75,7 @@ const RentalModalWrapper = styled.div`
     justify-content: space-between;
     padding-bottom: ${({ theme: { paddings } }) => paddings.base};
     border-bottom: 2px solid ${({ theme: { colors } }) => colors.gray_2};
+
     .title {
       font-weight: bold;
       font-size: ${({ theme: { fontSizes } }) => fontSizes.xxxl};
@@ -62,6 +84,12 @@ const RentalModalWrapper = styled.div`
       cursor: pointer;
       font-size: ${({ theme: { fontSizes } }) => fontSizes.xxxl};
     }
+  }
+
+  .error-message {
+    font-weight: bold;
+    padding: ${({ theme: { verticalInterval } }) => verticalInterval.base};
+    font-size: ${({ theme: { fontSizes } }) => fontSizes.xl};
   }
 
   ul {

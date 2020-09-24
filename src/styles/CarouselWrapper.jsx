@@ -23,4 +23,9 @@ export const CarouselWrapper = styled.div`
   .slick-next:before {
     color: black;
   }
+
+  .slick-track {
+    display: flex;
+    align-items: flex-end;
+  }
 `;

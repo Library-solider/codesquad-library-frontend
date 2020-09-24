@@ -9,7 +9,6 @@ const BookItem = ({ id, image, title, author }) => {
 
   return (
     <BookItemWrapper className="book_item">
-      <div className="testing" />
       <NavLink to={`/books/${id}`}>
         <img className="book-image" src={bookImage} alt="book cover" />
         <div className="book_title">{title}</div>

@@ -17,7 +17,7 @@ const ErrorPage = ({ status }) => {
       )}
       {status >= 500 && (
         <>
-          {500} <br />
+          <h1>{status}</h1>
           <h1>일시적인 오류가 발생했습니다.</h1>
         </>
       )}

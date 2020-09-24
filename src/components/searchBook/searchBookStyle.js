@@ -9,6 +9,10 @@ export const SearchBookWrapper = styled.div`
   :empty {
     height: 100vh;
   }
+
+  .catalog-svg {
+    width: 70vw;
+  }
 `;
 
 export const SearchBookInner = styled.div`
@@ -18,12 +22,6 @@ export const SearchBookInner = styled.div`
 
   .book_item {
     width: 20%;
-  }
-
-  @media ${({ theme: { device } }) => device.tabletL} {
-    .book_item {
-      width: 33.3333%;
-    }
   }
 
   @media ${({ theme: { device } }) => device.mobileL} {
