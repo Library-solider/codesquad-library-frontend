@@ -11,6 +11,7 @@ export const useFetch = (url, option) => {
       try {
         const response = await fetch(url, option);
         const initialData = await response.json();
+
         if (initialData.status !== true) {
           throw initialData;
         } else {
@@ -46,8 +47,10 @@ export const useBooksFetch = (url, options) => {
         if (json.status !== true) {
           throw json;
         } else {
-          setResponse(json);
-          setIsLoading(true);
+          setTimeout(() => {
+            setResponse(json);
+            setIsLoading(true);
+          }, 300);
         }
       } catch (error) {
         setIsLoading(true);
