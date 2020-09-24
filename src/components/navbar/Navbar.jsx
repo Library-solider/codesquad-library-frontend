@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styled, { ThemeContext } from "styled-components";
 import codesquad_logo from "../../assets/images/codesquad-logo.png";
 import { Button } from "../../styles/Button";
+import user_image from "../../assets/images/sample-profile.jpeg";
 
 import Search from "../search/Search";
 import { GET_OPTION } from "../../constants/fetch";
@@ -37,7 +38,7 @@ const Navbar = () => {
       <Search />
 
       {isLogin ? (
-        <>
+        <div className="user-info">
           <LoginButton
             fillColor={themeContext.colors.blue_2}
             textColor={themeContext.colors.white}
@@ -45,7 +46,7 @@ const Navbar = () => {
             <Link to="/mypage">내 서재</Link>
           </LoginButton>
           <img src={userInfo.avatarUrl} alt="user logo" />
-        </>
+        </div>
       ) : (
         <LoginButton
           fillColor={themeContext.colors.green_1}
