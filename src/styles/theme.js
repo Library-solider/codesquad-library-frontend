@@ -88,7 +88,7 @@ const colors = {
   green_1: "#3cb46e",
   blue: "#0366d6",
   blue_2: "rgb(31, 140, 230)",
-  red: "FF0000",
+  red_1: "#EB0000",
 };
 
 const device = {
