@@ -21,8 +21,11 @@ const RentalModal = ({ onCloseModal }) => {
       );
       const data = await response.json();
 
-      if (data.status !== 200) throw data;
-      if (data.status === 200) history.push("/");
+      if (data.status !== true) {
+        throw data;
+      } else {
+        history.push("/");
+      }
     } catch (error) {
       setErrorResponse(error);
     }
