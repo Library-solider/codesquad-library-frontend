@@ -43,7 +43,7 @@ const Navbar = () => {
             fillColor={themeContext.colors.blue_2}
             textColor={themeContext.colors.white}
           >
-            <Link to="/mypage">내 서재</Link>
+            <Link to="/mypage/rental">내 서재</Link>
           </LoginButton>
           <img src={userInfo.avatarUrl} alt="user logo" />
         </div>
