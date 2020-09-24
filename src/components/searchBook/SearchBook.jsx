@@ -1,20 +1,16 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useIsMobile } from "../../hooks/useMediaQuery";
 import querystring from "query-string";
+import { useIsMobile } from "../../hooks/useMediaQuery";
 
-import {
-  SearchBookWrapper,
-  SearchBookInner,
-  ItemPlaceholder,
-} from "./searchBookStyle";
+import { SearchBookWrapper, SearchBookInner } from "./searchBookStyle";
 
 import BookItem from "../bookItem/BookItem";
 import Pagination from "../pagination/Pagination";
 import ErrorPage from "../errorPage/ErrorPage";
 
 import Loading from "../Loading";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import CatalogMagic from "../catalogMagic/CatalogMagic";
 
 import {
   PER_PAGE,
@@ -26,23 +22,21 @@ import {
 import { createRequestUrl } from "../../utils/url";
 import { useBooksFetch } from "../../hooks/useFetch";
 
+const CATALOG_COLUMN_MOBILE = 1;
+const CATALOG_COLUMN_DESKTOP = 5;
+
 const SearchBook = () => {
-  // hook
   const history = useHistory();
 
-  // Query String
   const requestUrl = createRequestUrl(history.location);
   const parsedSearchQueries = querystring.parse(history.location.search);
   const currentPage = parsedSearchQueries.page
     ? parsedSearchQueries.page
     : MIN_PAGINATION;
 
-  // State
   const { response, error, isLoading } = useBooksFetch(requestUrl, null);
 
-  const isMobile = useIsMobile()
-    ? SHOW_PAGE_COUNT_MOBILE
-    : SHOW_PAGE_COUNT_DESKTOP;
+  const isMobile = useIsMobile();
 
   if (error) return <ErrorPage status={error.status} />;
   if (!response) return <Loading />;
@@ -51,7 +45,13 @@ const SearchBook = () => {
 
   return (
     <>
-      {isLoading && (
+      {!isLoading ? (
+        <SearchBookWrapper>
+          <CatalogMagic
+            column={isMobile ? CATALOG_COLUMN_MOBILE : CATALOG_COLUMN_DESKTOP}
+          />
+        </SearchBookWrapper>
+      ) : (
         <>
           <SearchBookWrapper>
             <SearchBookInner>
@@ -69,7 +69,9 @@ const SearchBook = () => {
           <Pagination
             totalItem={response.data.bookCount}
             itemPerPage={PER_PAGE}
-            showPageCount={isMobile}
+            showPageCount={
+              isMobile ? SHOW_PAGE_COUNT_MOBILE : SHOW_PAGE_COUNT_DESKTOP
+            }
             currentPage={Math.max(currentPage, 1)}
           />
         </>
