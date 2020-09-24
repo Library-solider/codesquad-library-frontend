@@ -6,7 +6,6 @@ import codesquad_logo from "../../assets/images/codesquad-logo.png";
 import { Button } from "../../styles/Button";
 
 import Search from "../search/Search";
-
 import { GET_OPTION } from "../../constants/fetch";
 
 const OAUTH_LINK =
@@ -38,9 +37,15 @@ const Navbar = () => {
       <Search />
 
       {isLogin ? (
-        <div className="user-info">
+        <>
+          <LoginButton
+            fillColor={themeContext.colors.blue_2}
+            textColor={themeContext.colors.white}
+          >
+            <Link to="/mypage">내 서재</Link>
+          </LoginButton>
           <img src={userInfo.avatarUrl} alt="user logo" />
-        </div>
+        </>
       ) : (
         <LoginButton
           fillColor={themeContext.colors.green_1}
@@ -64,6 +69,27 @@ const NavbarWrapper = styled.div`
   background-color: ${({ theme: { colors } }) => colors.gray_1};
 
   .user-info {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${({ theme: { colors } }) => colors.white};
+    cursor: pointer;
+
+    .my-library {
+      padding: 0.4rem 0.6rem;
+      border: 1px solid white;
+      border-radius: 0.6rem;
+      display: flex;
+    }
+
+    button {
+      order: 0;
+      margin-right: 0.6rem;
+    }
+    svg {
+      font-size: 1.8rem;
+    }
     img {
       width: 2.5rem;
       border-radius: 50%;
