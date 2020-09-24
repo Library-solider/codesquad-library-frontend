@@ -5,6 +5,11 @@ import { FcDeleteRow } from "react-icons/fc";
 const ErrorPage = ({ status }) => {
   return (
     <NotFoundPageWrapper>
+      {status === 400 && (
+        <>
+          <h1>로그인이 필요한 서비스 입니다.</h1>
+        </>
+      )}
       {status === 404 && (
         <>
           <FcDeleteRow />

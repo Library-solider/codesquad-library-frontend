@@ -13,13 +13,12 @@ import Footer from "./components/Footer/Footer";
 import IntroPage from "./page/IntroPage";
 import DetailBook from "./components/detailBook/DetailBook";
 import SearchBook from "./components/searchBook/SearchBook";
-import RentalHistory from "./components/rentalHistory/RentalHistory";
 import ErrorPage from "./components/errorPage/ErrorPage";
 import Category from "./components/category/Category";
+import MyPage from "./components/mypage/MyPage";
 
 // test code
 
-import Test from "./components/Test";
 const App = () => {
   return (
     <div>
@@ -32,8 +31,7 @@ const App = () => {
           <Route path="/books/:id" component={DetailBook} />
           <Route path="/search" component={SearchBook} />
           <Route path="/category/:id" component={SearchBook} />
-          <Route path="/mypage/rentalHistory" component={RentalHistory} />
-          <Route path="/testpage" component={Test} />
+          <Route path="/mypage" component={MyPage} />
           <Route
             render={() => {
               return <ErrorPage status={404} />;
