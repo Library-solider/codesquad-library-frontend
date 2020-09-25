@@ -10,7 +10,7 @@ import MyRental from "./MyRental";
 
 import { GET_OPTION } from "../../constants/fetch";
 
-const MYPAGE_API = "https://backend.librarycodesquad.com/v1/user/mypage";
+const MYPAGE_API = "https://backend.librarycodesquad.com/v1/users/mypage";
 
 const MyPage = () => {
   const { response, error } = useFetch(MYPAGE_API, GET_OPTION);
