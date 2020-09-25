@@ -6,7 +6,6 @@ import { Button } from "../../styles/Button";
 
 const MyProfile = ({ name, email, avatarUrl }) => {
   const { colors } = useContext(ThemeContext);
-  console.log(colors);
 
   return (
     <MyProfileWrapper>

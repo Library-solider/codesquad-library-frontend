@@ -18,7 +18,7 @@ const MyPage = () => {
   if (error) return <ErrorPage status={error.status} />;
   if (!response) return <Loading />;
 
-  const { name, email, avatarUrl, rentalBookResponse } = response;
+  const { name, email, avatarUrl, rentalBookResponse } = response.data;
 
   return (
     <MyPageWrapper>
