@@ -31,7 +31,7 @@ const App = () => {
           <Route path="/books/:id" component={DetailBook} />
           <Route path="/search" component={SearchBook} />
           <Route path="/category/:id" component={SearchBook} />
-          <Route path="/mypage/rental" component={MyPage} />
+          <Route path="/mypage" component={MyPage} />
           <Route
             render={() => {
               return <ErrorPage status={404} />;
