@@ -17,3 +17,9 @@ export const POST_OPTION = {
     "Content-Type": "application/json",
   },
 };
+
+export const PUT_OPTION = {
+  method: "PUT",
+  cache: "no-cache",
+  credentials: "include",
+};
