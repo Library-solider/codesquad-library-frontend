@@ -9,7 +9,7 @@ const MyRental = ({ rentalList }) => {
     <MyRentalWrapper>
       <h1 className="my-rental-title">대여 리스트</h1>
       <RentalCardList>
-        {rentalList ? (
+        {rentalList.length ? (
           <>
             {rentalList.map((el) => (
               <RentalCard {...el} />
