@@ -97,6 +97,7 @@ export const RentalCardWrapper = styled.li`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    text-align: center;
   }
 
   .return-date {
