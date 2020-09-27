@@ -42,7 +42,6 @@ const ModalWrapper = styled.div`
 
   @media ${({ theme: { device } }) => device.mobileL} {
     width: 90%;
-    height: 70%;
   }
 `;
 
