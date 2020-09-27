@@ -73,6 +73,8 @@ export const MyRentalWrapper = styled.div`
 
 export const RentalCardList = styled.ul`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   width: inherit;
 `;
@@ -80,35 +82,49 @@ export const RentalCardList = styled.ul`
 export const RentalCardWrapper = styled.li`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: center;
+  width: 30%;
   padding: 1.2rem;
-  margin: 1.2rem 0;
-
+  margin: 1.2rem;
   border-radius: 1.2rem;
+  flex-direction: column;
+
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   .book-title {
-    font-size: 1.4rem;
+    width: 100%;
+    font-size: 1.2rem;
     font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .return-date {
-    border-radius: 1.2rem;
-    color: white;
-    display: inline-block;
-    padding: 0.6rem;
-    margin-top: 0.4rem;
-    margin-right: 0.4rem;
-    background-color: ${({ theme: { colors } }) => colors.green_1};
+    margin: 0.4rem;
     font-weight: bold;
+    color: ${({ theme: { colors } }) => colors.gray_2};
   }
 
   @media ${({ theme: { device } }) => device.mobileL} {
-    flex-direction: column;
+    width: 100%;
     text-align: center;
 
     button {
       margin-top: 0.8rem;
     }
   } ;
+`;
+
+export const ReturnModalInner = styled.div`
+  text-align: center;
+
+  .modal-buttons {
+    margin-top: 1.5rem;
+
+    button {
+      margin: 0.5rem;
+      justify-content: space-between;
+      width: 45%;
+    }
+  }
 `;
