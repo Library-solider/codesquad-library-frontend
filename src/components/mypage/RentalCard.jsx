@@ -21,7 +21,7 @@ const RentalCard = ({ title, returnDate, imageUrl, id }) => {
       const response = await fetch(createReturnAPI(id), PUT_OPTION);
       const data = await response.json();
 
-      if (data.status !== 200) {
+      if (data.status !== true) {
         throw data;
       } else {
         window.location.reload();
