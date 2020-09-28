@@ -1,11 +1,21 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "styled-components";
+import { useHistory } from "react-router-dom";
 
+import { ThemeContext } from "styled-components";
 import { MyProfileWrapper } from "./MyPage.element";
 import { Button } from "../../styles/Button";
 
+import { deleteCookie } from "../../utils/cookie";
+import { JSESSION_KEY } from "../../constants/cookie";
+
 const MyProfile = ({ name, email, avatarUrl }) => {
+  const history = useHistory();
   const { colors } = useContext(ThemeContext);
+
+  const onClickLogout = () => {
+    deleteCookie(JSESSION_KEY);
+    history.push("/");
+  };
 
   return (
     <MyProfileWrapper>
@@ -17,7 +27,11 @@ const MyProfile = ({ name, email, avatarUrl }) => {
         </div>
       </div>
       <div className="myprofile-right">
-        <Button fillColor={colors.red_1} textColor={colors.white}>
+        <Button
+          fillColor={colors.red_1}
+          textColor={colors.white}
+          onClick={onClickLogout}
+        >
           로그아웃
         </Button>
       </div>
