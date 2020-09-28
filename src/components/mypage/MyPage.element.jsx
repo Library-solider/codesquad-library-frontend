@@ -19,11 +19,10 @@ export const MyPageInner = styled.div`
 export const MyProfileWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  border-radius: 1.2rem;
   width: 100%;
   margin-top: 2rem;
   padding: 1.2rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: ${({ theme: { boxShadow } }) => boxShadow.boxShadow_1};
 
   .myprofile-left {
     display: flex;
@@ -52,11 +51,10 @@ export const MyProfileWrapper = styled.div`
 
 export const MyRentalWrapper = styled.div`
   width: 100%;
-  border-radius: 1.2rem;
+
   margin-top: 2rem;
   padding: 1.2rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
+  box-shadow: ${({ theme: { boxShadow } }) => boxShadow.boxShadow_1};
   .my-rental-title {
     font-size: 1.6rem;
     font-weight: bold;
@@ -73,46 +71,26 @@ export const MyRentalWrapper = styled.div`
 
 export const RentalCardList = styled.ul`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: baseline;
   flex-wrap: wrap;
-  width: inherit;
 `;
 
 export const RentalCardWrapper = styled.li`
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 30%;
-  padding: 1.2rem;
-  margin: 1.2rem;
-  border-radius: 1.2rem;
   flex-direction: column;
-
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  .book-title {
-    width: 100%;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    text-align: center;
-  }
+  width: 33.3333%;
+  padding: 1rem;
 
   .return-date {
-    margin: 0.4rem;
     font-weight: bold;
-    color: ${({ theme: { colors } }) => colors.gray_2};
+    margin: 0.4rem;
+    color: ${(props) =>
+      props.isReturn ? props.theme.colors.red_1 : props.theme.colors.blue_2};
   }
 
   @media ${({ theme: { device } }) => device.mobileL} {
     width: 100%;
-    text-align: center;
-
-    button {
-      margin-top: 0.8rem;
-    }
   } ;
 `;
 
